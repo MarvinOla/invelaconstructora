@@ -45,7 +45,7 @@
   --sp-2xl: 12rem;
 
   /* --- Layout --- */
-  --nav-h:           104px;
+  --nav-h:           150px;
   --container:       1300px;
   --container-sm:    900px;
   --gutter:          clamp(1.5rem, 5vw, 4rem);
