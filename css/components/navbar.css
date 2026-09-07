@@ -1,0 +1,244 @@
+/* ============================================================
+   INVELA — Navbar
+   Transparente en hero → oscura sólida al hacer scroll
+   Logo más grande de lo estándar como pidió el cliente
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition: background var(--t-mid), box-shadow var(--t-mid), backdrop-filter var(--t-mid), transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease;
+}
+.navbar.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Estado inicial: sobre el hero */
+.navbar.is-top {
+  background: transparent;
+}
+
+/* Estado al hacer scroll */
+.navbar.is-scrolled {
+  background: rgba(26, 26, 26, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(245,197,24,0.15), var(--shadow-md);
+}
+
+.nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* ---- Logo ---- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 90px;        /* logo grande — petición del cliente */
+  width: auto;
+  transition: transform var(--t-mid), opacity var(--t-mid);
+  filter: brightness(1);
+}
+
+.nav-logo:hover img {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* ---- Menú central ---- */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  list-style: none;
+}
+
+.nav-menu a {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(20,20,18,0.72);
+  position: relative;
+  padding-bottom: 3px;
+  transition: color var(--t-mid);
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--c-accent);
+  border-radius: 99px;
+  transition: width var(--t-mid);
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--c-ink);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+  width: 100%;
+}
+
+/* ---- CTA persistente ---- */
+.nav-cta {
+  flex-shrink: 0;
+}
+
+.nav-cta .btn {
+  padding: 0.7rem 1.75rem;
+  font-size: 0.7rem;
+}
+
+/* ---- Hamburger (móvil) ---- */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  background: var(--c-ink);
+  border-radius: 2px;
+  transition: all var(--t-mid);
+}
+.nav-hamburger span:nth-child(1) { width: 28px; }
+.nav-hamburger span:nth-child(2) { width: 20px; }
+.nav-hamburger span:nth-child(3) { width: 28px; }
+
+.nav-hamburger.is-open span:nth-child(1) {
+  width: 28px;
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-hamburger.is-open span:nth-child(3) {
+  width: 28px;
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Menú móvil ---- */
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  background: rgba(22, 22, 22, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 2rem var(--gutter) 3rem;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--t-slow), opacity var(--t-slow);
+  z-index: 999;
+  border-top: 1px solid rgba(245,197,24,0.2);
+}
+
+.nav-mobile.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+}
+
+.nav-mobile ul a {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--c-white);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  letter-spacing: -0.01em;
+  transition: color var(--t-mid), padding-left var(--t-mid);
+}
+
+.nav-mobile ul a:hover {
+  color: var(--c-accent);
+  padding-left: 0.5rem;
+}
+
+/* ============================================================
+   CONTRASTE POR CONTEXTO
+   Por defecto los heroes son CLAROS → navbar con contenido oscuro.
+   Excepciones de hero OSCURO (proyectos, atria, guayacán) → blanco.
+   Al hacer scroll el navbar es oscuro en todas → blanco.
+   ============================================================ */
+
+/* --- Scroll: fondo oscuro en todas las páginas --- */
+.navbar.is-scrolled .nav-menu a { color: rgba(255,255,255,0.82); }
+.navbar.is-scrolled .nav-menu a:hover,
+.navbar.is-scrolled .nav-menu a.active { color: var(--c-white); }
+.navbar.is-scrolled .nav-hamburger span { background: var(--c-white); }
+.navbar.is-scrolled .nav-logo img { filter: brightness(0) invert(1); }
+
+/* --- Páginas con hero OSCURO en la parte superior --- */
+body[data-page="proyectos"] .navbar.is-top .nav-menu a,
+body[data-page="atria"] .navbar.is-top .nav-menu a,
+body[data-page="guayacan"] .navbar.is-top .nav-menu a { color: rgba(255,255,255,0.82); }
+body[data-page="proyectos"] .navbar.is-top .nav-menu a:hover,
+body[data-page="proyectos"] .navbar.is-top .nav-menu a.active,
+body[data-page="atria"] .navbar.is-top .nav-menu a:hover,
+body[data-page="atria"] .navbar.is-top .nav-menu a.active,
+body[data-page="guayacan"] .navbar.is-top .nav-menu a:hover,
+body[data-page="guayacan"] .navbar.is-top .nav-menu a.active { color: var(--c-white); }
+body[data-page="proyectos"] .navbar.is-top .nav-hamburger span,
+body[data-page="atria"] .navbar.is-top .nav-hamburger span,
+body[data-page="guayacan"] .navbar.is-top .nav-hamburger span { background: var(--c-white); }
+body[data-page="proyectos"] .navbar.is-top .nav-logo img,
+body[data-page="atria"] .navbar.is-top .nav-logo img,
+body[data-page="guayacan"] .navbar.is-top .nav-logo img { filter: brightness(0) invert(1); }
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .nav-menu { display: none; }
+  .nav-cta  { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-mobile { display: block; }
+}
+
+@media (max-width: 480px) {
+  .nav-logo img { height: 50px; }
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios — INVELA Constructora</title>
+  <meta name="description" content="Diseño, construcción, obra civil, estructuras metálicas y más. Metodología BIM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/navbar.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/sections.css" />
+  <link rel="stylesheet" href="css/components/pages.css" />
+  <link rel="stylesheet" href="css/components/cuts.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A1A1A'/><text y='24' x='4' font-size='22' fill='%23F5C518' font-family='serif' font-weight='bold'>I</text></svg>" />
+  <style>
+    .svc-layout { display:grid; grid-template-columns:260px 1fr; gap:0; min-height:80vh; }
+    .svc-sidebar { position:sticky; top:var(--nav-h); align-self:start; max-height:calc(100vh - var(--nav-h)); overflow-y:auto; background:var(--c-surface); padding:3rem 1.75rem; border-right:1px solid var(--c-gray-faint); }
+    .svc-sidebar h4 { font-size:var(--fs-xs); letter-spacing:0.18em; text-transform:uppercase; color:var(--c-gray-mid); margin-bottom:1.5rem; }
+    .svc-nav-link { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; border-radius:var(--r-md); color:var(--c-gray-mid); font-size:var(--fs-sm); text-decoration:none; transition:all var(--t-fast); margin-bottom:0.25rem; cursor:pointer; }
+    .svc-nav-link:hover, .svc-nav-link.active { background:rgba(245,197,24,0.16); color:var(--c-ink); }
+    .svc-nav-link.active { border-left:2px solid var(--c-accent); padding-left:calc(1rem - 2px); }
+    .svc-nav-num { font-size:var(--fs-xs); opacity:0.5; font-family:var(--font-display); }
+    .svc-content { padding:0; }
+    .svc-section { padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,5rem); border-bottom:1px solid var(--c-gray-faint); display:flex; flex-direction:column; justify-content:center; }
+    .svc-section:nth-child(even) { background:var(--c-surface); }
+    .svc-section-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; max-width:1000px; width:100%; margin:0 auto; }
+    .svc-section-inner.rev { direction:rtl; }
+    .svc-section-inner.rev > * { direction:ltr; }
+    .svc-icon-box { width:60px; height:60px; background:var(--c-dark); border-radius:var(--r-md); display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; }
+    .svc-tag { font-size:var(--fs-xs); font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--c-accent); margin-bottom:0.75rem; display:block; }
+    .svc-section h2 { font-size:clamp(1.5rem,2.5vw,2.2rem); margin-bottom:1rem; }
+    .svc-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-top:1.25rem; }
+    .svc-list li { display:flex; gap:0.75rem; align-items:flex-start; font-size:var(--fs-sm); color:var(--c-gray-mid); }
+    .svc-list li::before { content:'—'; color:var(--c-accent); font-weight:700; flex-shrink:0; }
+    .svc-img { border-radius:var(--r-xl); overflow:hidden; height:320px; }
+    @media(max-width:900px){
+      .svc-layout{grid-template-columns:1fr}
+      .svc-sidebar{position:sticky;top:var(--nav-h);height:auto;overflow-x:auto;white-space:nowrap;display:flex;gap:0.5rem;padding:1rem 1.25rem;border-right:none;border-bottom:1px solid var(--c-gray-faint);z-index:50}
+      .svc-sidebar h4{display:none}
+      .svc-nav-link{display:inline-flex;margin:0;white-space:nowrap}
+      .svc-section-inner{grid-template-columns:1fr}
+      .svc-section-inner.rev{direction:ltr}
+    }
+  </style>
+</head>
+<body data-page="servicios">
+  <div id="site-nav"></div>
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <nav class="breadcrumb"><a href="index.html">Inicio</a><span>/</span><span>Servicios</span></nav>
+        <span class="section-tag section-tag--light">Lo que hacemos</span>
+        <h1 data-reveal>Servicios que<br/>construyen futuro.</h1>
+        <p class="hero-sub" data-reveal data-delay="2">Desde la conceptualización hasta la entrega. Cada servicio respaldado por equipo propio, maquinaria y estándares internacionales.</p>
+      </div>
+      <span class="bg-number" aria-hidden="true">02</span>
+    </section>
+
+    <!-- STICKY SIDEBAR + SCROLLING CONTENT -->
+    <div class="svc-layout">
+      <nav class="svc-sidebar">
+        <h4>Servicios</h4>
+        <a href="#diseno" class="svc-nav-link active"><span class="svc-nav-num">01</span> Diseño y planificación</a>
+        <a href="#construccion" class="svc-nav-link"><span class="svc-nav-num">02</span> Construcción integral</a>
+        <a href="#civil" class="svc-nav-link"><span class="svc-nav-num">03</span> Obra civil</a>
+        <a href="#metalica" class="svc-nav-link"><span class="svc-nav-num">04</span> Estructura metálica</a>
+        <a href="#electrico" class="svc-nav-link"><span class="svc-nav-num">05</span> Eléctrico</a>
+        <a href="#movimiento" class="svc-nav-link"><span class="svc-nav-num">06</span> Movimiento de tierras</a>
+        <a href="#urbanizacion" class="svc-nav-link"><span class="svc-nav-num">07</span> Urbanización</a>
+      </nav>
+      <div class="svc-content">
+        <div id="diseno" class="svc-section">
+          <div class="svc-section-inner">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg></div>
+              <span class="svc-tag">01 — Diseño y planificación</span>
+              <h2>Planificamos cada detalle antes de clavar el primer clavo.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Modelado BIM 3D, cronograma detallado y coordinación integral antes de iniciar obra. Detectamos conflictos y optimizamos el diseño.</p>
+              <ul class="svc-list"><li>Modelado BIM 3D (Revit / ArchiCAD)</li><li>Cronograma y presupuesto detallado</li><li>Coordinación de especialidades</li><li>Gestión de permisos y tramitología</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><img src="assets/images/IMG-4.jpg" alt="Equipo de obra INVELA" style="width:100%;height:100%;object-fit:cover;">         
+</div></div>
+          </div>
+        </div>
+        <div id="construccion" class="svc-section">
+          <div class="svc-section-inner rev">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg></div>
+              <span class="svc-tag">02 — Construcción integral</span>
+              <h2>Construimos desde los cimientos hasta la entrega de llaves.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Supervisión técnica permanente, control de calidad y equipo propio en obra. Cumplimos cronogramas y presupuestos establecidos.</p>
+              <ul class="svc-list"><li>Residencial, corporativo e industrial</li><li>Equipo técnico propio en obra</li><li>Control de calidad</li><li>Reportes de avance semanales</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><img src="assets/images/IMG-5.jpg" alt="Equipo de obra INVELA" style="width:100%;height:100%;object-fit:cover;"></div>
+          </div>
+        </div>
+        <div id="civil" class="svc-section">
+          <div class="svc-section-inner">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21H20.25M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
+              <span class="svc-tag">03 — Obra civil</span>
+              <h2>Infraestructura que conecta y transforma comunidades.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Vialidad, puentes, muros de contención y sistemas de drenaje. Obra pública y privada ejecutada con calidad.</p>
+              <ul class="svc-list"><li>Puentes y pasos vehiculares</li><li>Carreteras y pavimentos</li><li>Sistemas de drenaje pluvial y sanitario</li><li>Muros de contención y taludes</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><img src="assets/images/IMG-8.jpg" alt="Equipo de obra INVELA" style="width:100%;height:100%;object-fit:cover;">         
+</div></div>
+          </div>
+        </div>
+        <div id="metalica" class="svc-section">
+          <div class="svc-section-inner rev">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg></div>
+              <span class="svc-tag">04 — Estructura metálica</span>
+              <h2>Diseñamos, fabricamos y montamos estructuras de alto rendimiento.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Fabricación en taller con control de calidad y montaje con equipo especializado propio.</p>
+              <ul class="svc-list"><li>Diseño estructural con modelado BIM</li><li>Fabricación en taller certificado</li><li>Montaje con grúa y equipo propio</li><li>Protección anticorrosión y pintura</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><img src="assets/images/IMG-9.jpg" alt="Equipo de obra INVELA" style="width:100%;height:100%;object-fit:cover;"> </div>
+          </div>
+        </div>
+        <div id="electrico" class="svc-section">
+          <div class="svc-section-inner">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg></div>
+              <span class="svc-tag">05 — Sistemas eléctricos</span>
+              <h2>Potencia y distribución eléctrica para proyectos de gran escala.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Subestaciones, tableros y armaduras. Diseño, suministro y montaje de sistemas de media tensión.</p>
+              <ul class="svc-list"><li>Subestaciones de media y alta tensión</li><li>Tableros de distribución industrial</li><li>Armaduras y líneas de transmisión</li><li>Sistemas UPS y generadores</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><img src="assets/images/IMG-10.jpg" alt="Equipo de obra INVELA" style="width:100%;height:100%;object-fit:cover;"></div>
+          </div>
+        </div>
+        <div id="movimiento" class="svc-section">
+          <div class="svc-section-inner rev">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg></div>
+              <span class="svc-tag">06 — Movimiento de tierras</span>
+              <h2>Preparamos el terreno para que todo lo demás sea posible.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Excavaciones, cortes, rellenos y compactación con maquinaria pesada propia en terrenos complejos.</p>
+              <ul class="svc-list"><li>Excavación y corte de terreno</li><li>Relleno y compactación controlada</li><li>Nivelación de plataformas</li><li>Maquinaria pesada propia</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">IMG-17 · Movimiento de tierras</span></div></div>
+          </div>
+        </div>
+        <div id="urbanizacion" class="svc-section">
+          <div class="svc-section-inner">
+            <div data-reveal>
+              <div class="svc-icon-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#F5C518" stroke-width="1.5" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg></div>
+              <span class="svc-tag">07 — Urbanización</span>
+              <h2>Desarrollamos comunidades enteras desde cero.</h2>
+              <p style="color:var(--c-gray-mid);margin-top:1rem;">Planificación y ejecución de proyectos de urbanización: lotes, vialidad, servicios y equipamiento urbano.</p>
+              <ul class="svc-list"><li>Planificación urbana y lotificación</li><li>Infraestructura de servicios completa</li><li>Vialidad interna y aceras</li><li>Áreas verdes y equipamiento</li></ul>
+            </div>
+            <div class="svc-img" data-reveal data-delay="2"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Altos de Guayacán · Urbanización</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="cta-final"><div class="container">
+      <h2 data-reveal>¿Necesitas alguno<br/>de estos servicios?</h2>
+      <div class="cta-actions" data-reveal data-delay="2">
+        <a href="contacto.html" class="btn btn--primary">Cotiza tu proyecto <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        <a href="proyectos.html" class="btn btn--outline-white">Ver proyectos</a>
+      </div>
+    </div></section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/invela.js"></script>
+</body>
+</html>

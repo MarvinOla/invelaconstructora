@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — INVELA Constructora</title>
+  <meta name="description" content="Contacta a INVELA Constructora para cotizar tu proyecto de construcción en Guatemala." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/navbar.css" />
+  <link rel="stylesheet" href="css/components/sections.css" />
+  <link rel="stylesheet" href="css/components/pages.css" />
+  <link rel="stylesheet" href="css/components/cuts.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A1A1A'/><text y='24' x='4' font-size='22' fill='%23F5C518' font-family='serif' font-weight='bold'>I</text></svg>" />
+  <style>
+    .contact-wrap {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + clamp(2.5rem,5vw,4rem)) var(--gutter) clamp(3rem,6vw,5rem);
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: start;
+    }
+    .contact-intro .breadcrumb {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: var(--fs-xs); color: var(--c-gray-mid);
+      margin-bottom: 2rem; letter-spacing: 0.06em;
+    }
+    .contact-intro .breadcrumb a { color: var(--c-gray-mid); }
+    .contact-intro .breadcrumb a:hover { color: var(--c-accent); }
+    .contact-intro .breadcrumb span { color: var(--c-accent); }
+    .contact-intro h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.02; color: var(--c-ink);
+      margin-bottom: 1.25rem;
+    }
+    .contact-intro h1 em { font-style: normal; color: var(--c-accent); }
+    .contact-intro .lead {
+      font-size: var(--fs-md); color: var(--c-text);
+      max-width: 40ch; margin-bottom: 2.5rem;
+    }
+    .contact-detail {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      padding: 1.25rem 0; border-top: 1px solid var(--c-gray-faint);
+    }
+    .contact-detail:last-of-type { border-bottom: 1px solid var(--c-gray-faint); }
+    .contact-detail-icon {
+      width: 46px; height: 46px; flex-shrink: 0;
+      background: var(--c-dark); border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-detail-icon svg { width: 20px; height: 20px; color: var(--c-accent); }
+    .contact-detail-text span {
+      display: block; font-size: var(--fs-xs); color: var(--c-gray-mid);
+      text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem;
+    }
+    .contact-detail-text a, .contact-detail-text strong {
+      color: var(--c-ink); font-size: var(--fs-base); font-weight: 600; text-decoration: none;
+    }
+    .contact-detail-text a:hover { color: var(--c-accent); }
+
+    .contact-form-card {
+      background: var(--c-surface);
+      border: 1.5px solid var(--c-gray-faint);
+      border-radius: var(--r-xl);
+      padding: clamp(1.75rem, 3vw, 2.75rem);
+    }
+    .contact-form-card h2 { font-size: var(--fs-lg); color: var(--c-ink); margin-bottom: 0.5rem; }
+    .contact-form-card > p { color: var(--c-gray-mid); font-size: var(--fs-sm); margin-bottom: 2rem; }
+    .contact-form label {
+      display: block; font-size: var(--fs-xs); font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-gray-mid); margin-bottom: 0.5rem;
+    }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; background: var(--c-white);
+      border: 1.5px solid var(--c-gray-faint); border-radius: var(--r-md);
+      padding: 0.875rem 1rem; font-family: var(--font-body); font-size: var(--fs-base);
+      color: var(--c-ink); transition: border-color var(--t-fast);
+    }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+      outline: none; border-color: var(--c-accent);
+    }
+    .contact-form textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { margin-bottom: 1.25rem; }
+
+    .contact-map {
+      max-width: var(--container); margin: 0 auto clamp(4rem,7vw,6rem);
+      padding: 0 var(--gutter);
+    }
+    .contact-map-inner { border-radius: var(--r-xl); overflow: hidden; height: clamp(280px, 40vw, 420px); }
+
+    @media (max-width: 900px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-page="contacto">
+  <div id="site-nav"></div>
+  <main>
+    <div class="contact-wrap">
+      <div class="contact-intro" data-reveal>
+        <nav class="breadcrumb"><a href="index.html">Inicio</a><span>/</span><span>Contacto</span></nav>
+        <h1>Cuéntanos<br/>tu <em>proyecto.</em></h1>
+        <p class="lead">Cotización gratuita y sin compromiso. Te respondemos en menos de 24 horas.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+          <div class="contact-detail-text"><span>Ubicación</span><strong>Guatemala</strong></div>
+        </div>
+      </div>
+
+      <div class="contact-form-card" data-reveal data-delay="2">
+        <h2>Solicita tu cotización</h2>
+        <p>Completa el formulario y te contactamos con una propuesta a tu medida.</p>
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre" /></div>
+            <div class="form-group"><label>Apellido</label><input type="text" placeholder="Tu apellido" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com" /></div>
+            <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+502" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Tipo de proyecto</label><select><option value="">Selecciona...</option><option>Residencial</option><option>Industrial</option><option>Eléctrico</option><option>Obra civil</option><option>Corporativo</option><option>Urbanización</option></select></div>
+            <div class="form-group"><label>Presupuesto estimado</label><select><option value="">Selecciona...</option><option>Menos de Q500K</option><option>Q500K – Q2M</option><option>Q2M – Q10M</option><option>Más de Q10M</option></select></div>
+          </div>
+          <div class="form-group"><label>Descripción del proyecto</label><textarea placeholder="Cuéntanos la ubicación, alcance y cualquier detalle relevante..."></textarea></div>
+          <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Enviar solicitud <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/invela.js"></script>
+</body>
+</html>

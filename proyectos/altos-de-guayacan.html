@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altos de Guayacán — INVELA Constructora</title>
+  <meta name="description" content="Altos de Guayacán: nuevo desarrollo residencial de INVELA. Urbanización planificada con lotes, áreas verdes y todos los servicios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components/navbar.css" />
+  <link rel="stylesheet" href="../css/components/sections.css" />
+  <link rel="stylesheet" href="../css/components/cuts.css" />
+  <link rel="stylesheet" href="../css/components/footer.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A1A1A'/><text y='24' x='4' font-size='22' fill='%23F5C518' font-family='serif' font-weight='bold'>I</text></svg>" />
+  <style>
+    /* Development-reveal layout: site-plan primero */
+    .dev-hero { min-height:100vh; display:grid; grid-template-rows:auto 1fr; background:var(--c-bg); padding-top:var(--nav-h); }
+    .dev-intro { background:var(--c-dark); padding:4rem clamp(2rem,5vw,5rem) 3rem; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:end; }
+    .dev-intro-text .project-eyebrow { font-size:var(--fs-xs); letter-spacing:0.2em; text-transform:uppercase; color:var(--c-accent); margin-bottom:1rem; display:block; }
+    .dev-intro-text h1 { font-size:clamp(2.5rem,6vw,5.5rem); font-weight:900; color:var(--c-white); line-height:1; margin-bottom:1.5rem; letter-spacing:-0.03em; }
+    .dev-intro-text p { color:rgba(255,255,255,0.55); font-size:var(--fs-lg); line-height:1.6; margin-bottom:2rem; }
+    .dev-intro-stats { display:flex; gap:3rem; }
+    .dev-stat span { display:block; font-size:var(--fs-xs); color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.3rem; }
+    .dev-stat strong { font-family:var(--font-display); font-size:var(--fs-2xl); color:var(--c-accent); font-weight:800; }
+    .dev-plan-preview { background:#111; border-radius:var(--r-xl) var(--r-xl) 0 0; overflow:hidden; height:260px; }
+
+    /* 3D SITE PLAN SECTION */
+    .dev-3d-plan { background:#0d0d0d; padding:clamp(4rem,7vw,6rem) var(--gutter); }
+    .dev-3d-inner { max-width:var(--container); margin:0 auto; display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:center; }
+    .dev-3d-canvas { height:480px; border-radius:var(--r-xl); overflow:hidden; background:#111; }
+
+    /* LOTE TYPES */
+    .dev-lots { padding:clamp(4rem,7vw,6rem) var(--gutter); background:var(--c-bg); }
+    .dev-lots-inner { max-width:var(--container); margin:0 auto; }
+    .lots-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:3rem; }
+    .lot-card { border-radius:var(--r-xl); overflow:hidden; border:1.5px solid var(--c-gray-faint); background:#fff; transition:transform var(--t-mid), box-shadow var(--t-mid); }
+    .lot-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+    .lot-card-img { height:200px; }
+    .lot-card-body { padding:1.75rem; }
+    .lot-type-tag { display:inline-block; background:rgba(245,197,24,0.1); color:var(--c-accent); font-size:var(--fs-xs); font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.3rem 0.75rem; border-radius:99px; margin-bottom:0.75rem; }
+    .lot-card h3 { font-size:var(--fs-lg); margin-bottom:0.5rem; }
+    .lot-specs { list-style:none; margin-top:1rem; display:flex; flex-direction:column; gap:0.4rem; }
+    .lot-specs li { font-size:var(--fs-sm); color:var(--c-gray-mid); display:flex; gap:0.5rem; }
+    .lot-specs li::before { content:'·'; color:var(--c-accent); font-weight:700; }
+
+    /* AMENIDADES */
+    .dev-amenities { background:var(--c-dark); padding:clamp(4rem,7vw,6rem) var(--gutter); }
+    .dev-amenities-inner { max-width:var(--container); margin:0 auto; }
+    .dev-am-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; }
+    .dev-am-item { text-align:center; padding:2rem 1rem; }
+    .dev-am-icon { font-size:2.5rem; margin-bottom:1rem; display:block; }
+    .dev-am-item h4 { color:var(--c-white); font-size:var(--fs-base); margin-bottom:0.4rem; }
+    .dev-am-item p { color:rgba(255,255,255,0.45); font-size:var(--fs-xs); }
+
+    /* UBICACIÓN */
+    .dev-location { padding:clamp(4rem,7vw,6rem) var(--gutter); background:var(--c-bg); }
+    .dev-location-inner { max-width:var(--container); margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:center; }
+    .dev-map { height:380px; border-radius:var(--r-xl); overflow:hidden; }
+
+    /* CTA */
+    .dev-cta { background:var(--c-accent); padding:clamp(4rem,7vw,6rem) var(--gutter); text-align:center; }
+    .dev-cta h2 { font-size:clamp(2rem,5vw,4rem); color:var(--c-dark); margin-bottom:1.5rem; }
+
+    @media(max-width:900px){
+      .dev-intro{grid-template-columns:1fr}
+      .dev-3d-inner,.dev-location-inner{grid-template-columns:1fr}
+      .lots-grid{grid-template-columns:1fr}
+      .dev-am-grid{grid-template-columns:repeat(2,1fr)}
+      .dev-3d-canvas,.dev-map{height:280px}
+    }
+  </style>
+</head>
+<body data-page="guayacan" data-base="../">
+  <div id="site-nav"></div>
+  <main>
+
+    <!-- HERO: SITE-PLAN PRIMERO (el desarrollo habla por su planta) -->
+    <section class="dev-hero">
+      <div class="dev-intro">
+        <div class="dev-intro-text" data-reveal>
+          <nav class="breadcrumb" style="margin-bottom:1.5rem;"><a href="../index.html" style="color:rgba(255,255,255,0.35);">Inicio</a><span style="color:rgba(255,255,255,0.2);">/</span><a href="../proyectos.html" style="color:rgba(255,255,255,0.35);">Proyectos</a><span style="color:rgba(255,255,255,0.2);">/</span><span style="color:rgba(255,255,255,0.35);">Altos de Guayacán</span></nav>
+          <span class="project-eyebrow" style="font-size:var(--fs-xs);letter-spacing:0.2em;text-transform:uppercase;color:var(--c-accent);margin-bottom:1rem;display:block;">Nuevo desarrollo · Urbanización residencial</span>
+          <h1>Altos de<br/>Guayacán</h1>
+          <p>El nuevo desarrollo residencial de INVELA. Urbanización planificada con lotes de diversas dimensiones, áreas verdes, vialidad interna y todos los servicios.</p>
+          <div class="dev-intro-stats">
+            <div class="dev-stat"><span>Lotes</span><strong>—</strong></div>
+            <div class="dev-stat"><span>Metodología</span><strong>BIM</strong></div>
+            <div class="dev-stat"><span>Estado</span><strong>Nuevo</strong></div>
+          </div>
+        </div>
+        <div data-reveal data-delay="2">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-xl);padding:2rem;margin-bottom:1.5rem;">
+            <h4 style="color:var(--c-accent);font-size:var(--fs-xs);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;">Características del desarrollo</h4>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+              <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.6);"><span style="color:var(--c-accent);">✓</span>Lotificación residencial con escritura</li>
+              <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.6);"><span style="color:var(--c-accent);">✓</span>Red de agua potable y drenajes</li>
+              <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.6);"><span style="color:var(--c-accent);">✓</span>Red eléctrica subterránea</li>
+              <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.6);"><span style="color:var(--c-accent);">✓</span>Vialidad interna pavimentada</li>
+              <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.6);"><span style="color:var(--c-accent);">✓</span>Áreas verdes y parques</li>
+              <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.6);"><span style="color:var(--c-accent);">✓</span>Seguridad perimetral 24/7</li>
+            </ul>
+          </div>
+          <div style="display:flex;gap:1rem;">
+            <a href="#lotes" class="btn btn--primary">Ver tipos de lote <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+            <a href="../contacto.html" class="btn btn--outline-white">Consultar precio</a>
+          </div>
+        </div>
+      </div>
+      <div class="dev-plan-preview">
+        <div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Altos de Guayacán · Plano de conjunto / vista aérea</span></div>
+      </div>
+    </section>
+
+    <!-- 3D SITE PLAN -->
+    <section class="dev-3d-plan">
+      <div class="dev-3d-inner">
+        <div data-reveal>
+          <span class="section-tag section-tag--light">Modelo BIM</span>
+          <h2 style="color:var(--c-white);margin-bottom:1.5rem;">Planta urbanística<br/>en 3D.</h2>
+          <p style="color:rgba(255,255,255,0.5);margin-bottom:1.5rem;">Modelo esquemático del desarrollo que muestra la distribución de manzanas, lotes, calles principales, parque central y áreas comunes. Generado con metodología BIM.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.5);"><span style="width:16px;height:2px;background:var(--c-accent);display:inline-block;"></span>Lotes tipo A (destacados)</li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.5);"><span style="width:16px;height:2px;background:#555;display:inline-block;"></span>Lotes tipo B y C</li>
+            <li style="display:flex;align-items:center;gap:0.75rem;font-size:var(--fs-sm);color:rgba(255,255,255,0.5);"><span style="width:16px;height:2px;background:#888;display:inline-block;"></span>Vialidad interna</li>
+          </ul>
+        </div>
+        <div class="dev-3d-canvas" data-reveal data-delay="2">
+          <canvas data-three-render="guayacan" style="width:100%;height:100%;display:block;"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA AÉREA -->
+    <section style="padding:0;background:#111;">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;height:480px;">
+        <div><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Altos de Guayacán · Vista aérea desarrollo</span></div></div>
+        <div style="display:grid;grid-rows:1fr 1fr;height:100%;">
+          <div style="height:50%;"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Vista vialidad interna</span></div></div>
+          <div style="height:50%;"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Área verde / parque</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPOS DE LOTE -->
+    <section id="lotes" class="dev-lots">
+      <div class="dev-lots-inner">
+        <span class="section-tag">Lotificación</span>
+        <h2 data-reveal>Tipos de lote<br/>disponibles.</h2>
+        <div class="lots-grid">
+          <div class="lot-card" data-reveal>
+            <div class="lot-card-img"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Lote Tipo A · Render</span></div></div>
+            <div class="lot-card-body">
+              <span class="lot-type-tag">Tipo A</span>
+              <h3>Lote Esquinero</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Lotes en esquina con frente doble, ideal para casas con mayor privacidad y acceso lateral.</p>
+              <ul class="lot-specs">
+                <li>Área: 250 – 350 m²</li>
+                <li>Frente: 12 – 15 ml</li>
+                <li>Fondo: 20 – 24 ml</li>
+              </ul>
+            </div>
+          </div>
+          <div class="lot-card" data-reveal data-delay="1">
+            <div class="lot-card-img"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Lote Tipo B · Render</span></div></div>
+            <div class="lot-card-body">
+              <span class="lot-type-tag">Tipo B</span>
+              <h3>Lote Interior</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Lotes intermedios con frente a calle interior, mayor tranquilidad y excelente distribución.</p>
+              <ul class="lot-specs">
+                <li>Área: 180 – 250 m²</li>
+                <li>Frente: 9 – 12 ml</li>
+                <li>Fondo: 18 – 22 ml</li>
+              </ul>
+            </div>
+          </div>
+          <div class="lot-card" data-reveal data-delay="2">
+            <div class="lot-card-img"><div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Lote Tipo C · Render</span></div></div>
+            <div class="lot-card-body">
+              <span class="lot-type-tag">Tipo C</span>
+              <h3>Lote con Vista</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Lotes en la periferia con vistas al entorno natural. Disponibilidad limitada.</p>
+              <ul class="lot-specs">
+                <li>Área: 300 – 450 m²</li>
+                <li>Frente: 12 – 18 ml</li>
+                <li>Fondo: 22 – 28 ml</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMENIDADES -->
+    <section class="dev-amenities">
+      <div class="dev-amenities-inner">
+        <span class="section-tag section-tag--light">Infraestructura</span>
+        <h2 data-reveal style="color:var(--c-white);margin-bottom:0;">Todo incluido<br/>en el desarrollo.</h2>
+        <div class="dev-am-grid">
+          <div class="dev-am-item" data-reveal><span class="dev-am-icon">💧</span><h4>Agua potable</h4><p>Red de distribución con medidores individuales y cisterna comunitaria</p></div>
+          <div class="dev-am-item" data-reveal data-delay="1"><span class="dev-am-icon">⚡</span><h4>Electricidad</h4><p>Red subterránea con acometida individual por lote</p></div>
+          <div class="dev-am-item" data-reveal data-delay="2"><span class="dev-am-icon">🛣️</span><h4>Vialidad</h4><p>Calles internas pavimentadas con señalización y aceras</p></div>
+          <div class="dev-am-item" data-reveal data-delay="3"><span class="dev-am-icon">🌳</span><h4>Áreas verdes</h4><p>Parque central y jardines perimetrales con mantenimiento</p></div>
+          <div class="dev-am-item" data-reveal data-delay="4"><span class="dev-am-icon">🔐</span><h4>Seguridad 24/7</h4><p>Garita de control, cámaras y vigilancia permanente</p></div>
+          <div class="dev-am-item" data-reveal data-delay="5"><span class="dev-am-icon">📡</span><h4>Internet</h4><p>Infraestructura de fibra óptica para conexión de alta velocidad</p></div>
+          <div class="dev-am-item" data-reveal data-delay="6"><span class="dev-am-icon">🏊</span><h4>Área recreativa</h4><p>Piscina comunitaria y área de juegos infantiles</p></div>
+          <div class="dev-am-item" data-reveal data-delay="7"><span class="dev-am-icon">🏛️</span><h4>Salón social</h4><p>Espacio de eventos cubierto para reuniones y celebraciones</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="dev-location">
+      <div class="dev-location-inner">
+        <div data-reveal>
+          <span class="section-tag">Ubicación</span>
+          <h2 style="margin-bottom:1.5rem;">Bien ubicado.<br/>Bien conectado.</h2>
+          <p style="color:var(--c-gray-mid);margin-bottom:1.5rem;">Altos de Guayacán está estratégicamente ubicado con acceso directo a carretera principal, a minutos de centros comerciales, hospitales, colegios y aeropuerto.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+            <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);"><span style="color:var(--c-accent);font-weight:700;">10 min</span><span style="color:var(--c-gray-mid);">Centro comercial más cercano</span></li>
+            <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);"><span style="color:var(--c-accent);font-weight:700;">15 min</span><span style="color:var(--c-gray-mid);">Hospital privado</span></li>
+            <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);"><span style="color:var(--c-accent);font-weight:700;">20 min</span><span style="color:var(--c-gray-mid);">Ciudad de Guatemala</span></li>
+            <li style="display:flex;gap:0.75rem;font-size:var(--fs-sm);"><span style="color:var(--c-accent);font-weight:700;">30 min</span><span style="color:var(--c-gray-mid);">Aeropuerto Internacional</span></li>
+          </ul>
+        </div>
+        <div class="dev-map" data-reveal data-delay="2">
+          <div class="img-ph" style="width:100%;height:100%;"><span class="ph-label">Mapa de ubicación · Altos de Guayacán</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA DESARROLLO -->
+    <section class="dev-cta">
+      <nav class="breadcrumb" style="justify-content:center;margin-bottom:2rem;"><a href="../proyectos.html" style="color:rgba(26,26,26,0.5);">← Todos los proyectos</a></nav>
+      <h2 data-reveal>¿Listo para reservar<br/>tu lote?</h2>
+      <p data-reveal data-delay="1" style="color:rgba(26,26,26,0.65);max-width:560px;margin:0 auto 2.5rem;">Disponibilidad limitada. Contacta a nuestro equipo de ventas para conocer precios, disponibilidad y condiciones de compra.</p>
+      <div class="cta-actions" data-reveal data-delay="2">
+        <a href="../contacto.html" class="btn btn--dark">Reservar ahora <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        <a href="../proyectos/atria.html" style="color:var(--c-dark);font-weight:600;text-decoration:none;display:flex;align-items:center;gap:0.5rem;">Ver proyecto Atria →</a>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" data-three></script>
+  <script src="../js/invela.js"></script>
+</body>
+</html>

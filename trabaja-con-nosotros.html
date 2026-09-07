@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabaja con nosotros — INVELA Constructora</title>
+  <meta name="description" content="Únete al equipo INVELA. Cultura, vacantes abiertas y formulario de postulación." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/navbar.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/sections.css" />
+  <link rel="stylesheet" href="css/components/pages.css" />
+  <link rel="stylesheet" href="css/components/cuts.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A1A1A'/><text y='24' x='4' font-size='22' fill='%23F5C518' font-family='serif' font-weight='bold'>I</text></svg>" />
+  <style>
+    .manifesto { background:var(--c-accent); padding:clamp(5rem,10vw,9rem) var(--gutter); text-align:center; }
+    .manifesto h2 { font-size:clamp(2rem,5vw,4.5rem); color:var(--c-dark); line-height:1.1; margin-bottom:1.5rem; }
+    .manifesto p { font-size:clamp(1rem,2vw,1.25rem); color:rgba(26,26,26,0.7); max-width:600px; margin:0 auto; }
+    .culture-pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(255,255,255,0.06); }
+    .culture-pillar { background:var(--c-dark); padding:3rem 2.5rem; }
+    .culture-pillar h3 { color:var(--c-accent); font-size:var(--fs-xl); margin-bottom:1rem; }
+    .culture-pillar p { color:rgba(255,255,255,0.6); font-size:var(--fs-sm); line-height:1.75; }
+    .job-listings { display:flex; flex-direction:column; gap:1.5rem; }
+    .job-card { border:1.5px solid var(--c-gray-faint); border-radius:var(--r-xl); padding:2rem 2.5rem; display:grid; grid-template-columns:1fr auto; align-items:center; gap:2rem; transition:border-color var(--t-fast), box-shadow var(--t-fast); }
+    .job-card:hover { border-color:var(--c-accent); box-shadow:0 0 0 1px var(--c-accent); }
+    .job-meta { display:flex; gap:1rem; margin-top:0.75rem; }
+    .job-tag { background:var(--c-bg); border-radius:99px; padding:0.25rem 0.75rem; font-size:var(--fs-xs); color:var(--c-gray-mid); font-weight:600; }
+    .job-tag--accent { background:rgba(245,197,24,0.1); color:var(--c-accent); }
+    .cv-form-wrap { background:var(--c-bg); border-radius:var(--r-xl); padding:3rem; }
+    .form-group { margin-bottom:1.25rem; }
+    .form-group label { display:block; font-size:var(--fs-xs); font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--c-gray-mid); margin-bottom:0.5rem; }
+    .form-group input, .form-group textarea, .form-group select { width:100%; border:1.5px solid var(--c-gray-faint); border-radius:var(--r-md); padding:0.875rem 1rem; font-family:var(--font-body); font-size:var(--fs-base); color:var(--c-dark); background:#fff; transition:border-color var(--t-fast); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline:none; border-color:var(--c-accent); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+    @media(max-width:768px){ .culture-pillars{grid-template-columns:1fr} .job-card{grid-template-columns:1fr} .form-row{grid-template-columns:1fr} }
+  </style>
+</head>
+<body data-page="trabaja">
+  <div id="site-nav"></div>
+  <main>
+    <div style="padding-top:var(--nav-h);">
+      <div class="manifesto">
+        <nav class="breadcrumb" style="justify-content:center;margin-bottom:2rem;"><a href="index.html">Inicio</a><span>/</span><span>Trabaja con nosotros</span></nav>
+        <h2 data-reveal>Construye tu carrera<br/>con quienes construyen<br/>el futuro de Guatemala.</h2>
+        <p data-reveal data-delay="2">En INVELA buscamos personas con pasión, compromiso y ganas de crecer. Si quieres ser parte de un equipo técnico de excelencia, este es tu lugar.</p>
+      </div>
+    </div>
+
+    <section class="bg-dark">
+      <div class="culture-pillars">
+        <div class="culture-pillar" data-reveal><h3>Crecimiento real</h3><p>Formamos a nuestro equipo con capacitación técnica continua, mentoring y oportunidades de liderazgo en proyectos de alto impacto.</p></div>
+        <div class="culture-pillar" data-reveal data-delay="1"><h3>Tecnología BIM</h3><p>Trabajamos con las herramientas más modernas del sector: Revit, ArchiCAD, drones, escáner 3D y gestión digital de proyectos.</p></div>
+        <div class="culture-pillar" data-reveal data-delay="2"><h3>Impacto tangible</h3><p>Cada proyecto que ejecutas transforma el entorno urbano de Guatemala. Tu trabajo se ve, se toca y dura décadas.</p></div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-white" aria-labelledby="vacantes-h">
+      <div class="container">
+        <span class="section-tag">Oportunidades</span>
+        <h2 id="vacantes-h" data-reveal style="margin-bottom:3rem;">Posiciones abiertas.</h2>
+        <div class="job-listings">
+          <div class="job-card" data-reveal>
+            <div>
+              <h3 style="font-size:var(--fs-lg);margin-bottom:0.5rem;">Ingeniero Civil / Residente de Obra</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Supervisión de proyectos de construcción civil y residencial. Reportes de avance y control de calidad en sitio.</p>
+              <div class="job-meta"><span class="job-tag">Tiempo completo</span><span class="job-tag">Campo</span><span class="job-tag--accent job-tag">Urgente</span></div>
+            </div>
+            <a href="#cv-form" class="btn btn--primary">Aplicar →</a>
+          </div>
+          <div class="job-card" data-reveal>
+            <div>
+              <h3 style="font-size:var(--fs-lg);margin-bottom:0.5rem;">Especialista BIM / Modelador Revit</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Creación y coordinación de modelos BIM para proyectos de edificación. Experiencia en Revit y Navisworks.</p>
+              <div class="job-meta"><span class="job-tag">Tiempo completo</span><span class="job-tag">Oficina</span></div>
+            </div>
+            <a href="#cv-form" class="btn btn--primary">Aplicar →</a>
+          </div>
+          <div class="job-card" data-reveal>
+            <div>
+              <h3 style="font-size:var(--fs-lg);margin-bottom:0.5rem;">Técnico en Estructuras Metálicas</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Montaje y supervisión de estructuras metálicas industriales. Conocimiento en soldadura estructural.</p>
+              <div class="job-meta"><span class="job-tag">Tiempo completo</span><span class="job-tag">Campo</span></div>
+            </div>
+            <a href="#cv-form" class="btn btn--primary">Aplicar →</a>
+          </div>
+          <div class="job-card" data-reveal>
+            <div>
+              <h3 style="font-size:var(--fs-lg);margin-bottom:0.5rem;">Asistente de Proyectos / Coordinación</h3>
+              <p style="color:var(--c-gray-mid);font-size:var(--fs-sm);">Apoyo administrativo y técnico en la gestión de proyectos: cronogramas, órdenes de compra y seguimiento.</p>
+              <div class="job-meta"><span class="job-tag">Tiempo completo</span><span class="job-tag">Oficina</span></div>
+            </div>
+            <a href="#cv-form" class="btn btn--primary">Aplicar →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv-form" class="section-pad bg-dark">
+      <div class="container" style="max-width:800px;">
+        <span class="section-tag section-tag--light">Postulación</span>
+        <h2 data-reveal style="color:var(--c-white);margin-bottom:2.5rem;">Envía tu hoja<br/>de vida.</h2>
+        <div class="cv-form-wrap" data-reveal data-delay="2">
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre" /></div>
+              <div class="form-group"><label>Apellido</label><input type="text" placeholder="Tu apellido" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com" /></div>
+              <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+502" /></div>
+            </div>
+            <div class="form-group"><label>Posición de interés</label>
+              <select><option value="">Selecciona...</option><option>Ingeniero Civil / Residente de Obra</option><option>Especialista BIM / Modelador Revit</option><option>Técnico en Estructuras Metálicas</option><option>Asistente de Proyectos</option><option>Otra posición</option></select>
+            </div>
+            <div class="form-group"><label>Experiencia laboral</label><textarea placeholder="Cuéntanos tu experiencia relevante..."></textarea></div>
+            <div class="form-group"><label>Adjuntar CV (PDF)</label><input type="file" accept=".pdf,.doc,.docx" /></div>
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:0.5rem;">Enviar postulación <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/invela.js"></script>
+</body>
+</html>

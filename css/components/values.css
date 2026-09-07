@@ -1,0 +1,251 @@
+/* ============================================================
+   INVELA — Sección CREOH valores animados
+   Cada valor entra con animación, íconos SVG que se dibujan
+   ============================================================ */
+
+.values-section {
+  padding: var(--sp-2xl) 0;
+  background: var(--c-dark);
+  color: var(--c-white);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Patrón de fondo sutil */
+.values-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(245,197,24,0.04) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Texto "CREOH" decorativo de fondo */
+.values-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 22vw, 22rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.025);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.values-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.values-header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.values-header h2 { color: var(--c-white); }
+.values-header p {
+  color: rgba(255,255,255,0.5);
+  max-width: 48ch;
+  margin: 1rem auto 0;
+}
+
+/* ---- Grid de valores ---- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* ---- Card individual ---- */
+.value-card {
+  background: rgba(26,26,26,0.95);
+  padding: clamp(2rem, 3vw, 3rem) 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: background var(--t-mid);
+}
+
+/* Barra inferior hover */
+.value-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 0px;
+  background: var(--c-accent);
+  transition: height var(--t-slow);
+}
+.value-card:hover::after { height: 4px; }
+
+/* Fondo hover suave */
+.value-card:hover { background: rgba(30,30,30,0.99); }
+
+/* ---- Letra grande del valor ---- */
+.value-letter {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(245,197,24,0.35);
+  transition: -webkit-text-stroke-color var(--t-mid), color var(--t-mid);
+  user-select: none;
+}
+.value-card:hover .value-letter {
+  color: rgba(245,197,24,0.08);
+  -webkit-text-stroke-color: var(--c-accent);
+}
+
+/* ---- Icono SVG que se dibuja ---- */
+.value-icon-wrap {
+  width: 56px; height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.value-icon {
+  width: 100%; height: 100%;
+  position: relative;
+}
+
+/* Paths del SVG: animación de dibujo */
+.value-icon path,
+.value-icon circle,
+.value-icon polyline,
+.value-icon line,
+.value-icon rect {
+  stroke: var(--c-accent);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* La animación se activa cuando el card tiene la clase in-view */
+.value-card.in-view .value-icon path,
+.value-card.in-view .value-icon circle,
+.value-card.in-view .value-icon polyline,
+.value-card.in-view .value-icon line,
+.value-card.in-view .value-icon rect {
+  stroke-dashoffset: 0;
+}
+
+/* Stagger entre cards */
+.value-card:nth-child(1) .value-icon path { transition-delay: 0.0s; }
+.value-card:nth-child(2) .value-icon path { transition-delay: 0.15s; }
+.value-card:nth-child(3) .value-icon path { transition-delay: 0.3s; }
+.value-card:nth-child(4) .value-icon path { transition-delay: 0.45s; }
+.value-card:nth-child(5) .value-icon path { transition-delay: 0.6s; }
+
+/* Stagger de entrada del card */
+.value-card:nth-child(1) { transition-delay: 0s; }
+.value-card:nth-child(2) { transition-delay: 0.1s; }
+.value-card:nth-child(3) { transition-delay: 0.2s; }
+.value-card:nth-child(4) { transition-delay: 0.3s; }
+.value-card:nth-child(5) { transition-delay: 0.4s; }
+
+/* ---- Nombre del valor (h3 dentro de la card) ---- */
+.value-name,
+.value-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: var(--c-white);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* Descripción (p dentro de la card) */
+.value-card p {
+  font-size: var(--fs-sm);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ---- Descripción ---- */
+.value-desc {
+  font-size: var(--fs-sm);
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  transition: color var(--t-mid);
+}
+.value-card:hover .value-desc { color: rgba(255,255,255,0.7); }
+
+/* ---- Dot indicador ---- */
+.value-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(245,197,24,0.2);
+  border: 1.5px solid rgba(245,197,24,0.3);
+  margin-top: auto;
+  transition: background var(--t-mid), transform var(--t-spring);
+}
+.value-card:hover .value-dot {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  transform: scale(1.4);
+}
+
+/* ---- Animación de entrada del card ---- */
+.values-grid [data-reveal] {
+  transform: translateY(60px) scale(0.96);
+}
+.values-grid [data-reveal].is-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1100px) {
+  .values-grid { grid-template-columns: repeat(3, 1fr); }
+  .value-card:nth-child(4),
+  .value-card:nth-child(5) {
+    grid-column: span 1;
+  }
+  /* Centrar los últimos 2 */
+  .values-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .value-card { grid-column: span 2; }
+  .value-card:nth-child(4) { grid-column: 2 / span 2; }
+  .value-card:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+@media (max-width: 768px) {
+  .values-grid,
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .value-card { grid-column: span 1 !important; }
+  .value-card:nth-child(5) { grid-column: 1 / -1 !important; }
+  .value-letter { font-size: 3.5rem; }
+}
+
+@media (max-width: 480px) {
+  .values-grid { grid-template-columns: 1fr; }
+  .value-card:nth-child(5) { grid-column: 1 !important; }
+}

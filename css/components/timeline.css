@@ -1,0 +1,93 @@
+/* ============================================================
+   INVELA — Proceso "Así construimos"
+   Stepper horizontal robusto (usa data-reveal, no display:contents)
+   ============================================================ */
+
+.process {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  position: relative;
+}
+
+/* Conector horizontal detrás de los nodos */
+.process::before {
+  content: '';
+  position: absolute;
+  top: 27px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: var(--c-gray-faint);
+  z-index: 0;
+}
+
+.process-step {
+  position: relative;
+  z-index: 1;
+}
+
+.ps-node {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--c-dark);
+  color: var(--c-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 0 8px var(--c-bg);
+  transition: transform var(--t-spring), background var(--t-mid), color var(--t-mid);
+}
+.process-step:hover .ps-node {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  transform: translateY(-4px);
+}
+
+.process-step h4 {
+  font-size: var(--fs-md);
+  color: var(--c-ink);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.process-step p {
+  font-size: var(--fs-sm);
+  color: var(--c-gray-mid);
+  line-height: 1.65;
+  max-width: 30ch;
+}
+
+/* En superficie (bg-surface) el anillo del nodo debe igualar el fondo */
+.bg-surface .ps-node { box-shadow: 0 0 0 8px var(--c-surface); }
+
+/* ---- Móvil: rail vertical ---- */
+@media (max-width: 760px) {
+  .process {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    gap: 0;
+  }
+  .process::before {
+    top: 0; bottom: 0;
+    left: 27px; right: auto;
+    width: 2px; height: auto;
+  }
+  .process-step {
+    padding-left: 5rem;
+    padding-bottom: 2.5rem;
+    min-height: 72px;
+  }
+  .process-step:last-child { padding-bottom: 0; }
+  .ps-node {
+    position: absolute;
+    left: 0; top: 0;
+    margin-bottom: 0;
+  }
+  .process-step p { max-width: 100%; }
+}

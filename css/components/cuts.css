@@ -1,0 +1,128 @@
+/* ============================================================
+   INVELA — CUTS: lenguaje diagonal de marca
+   Imágenes recortadas en paralelogramo + losa amarilla detrás,
+   números gigantes en Bebas Neue, losas diagonales en CTAs.
+   Se aplica por selector: no requiere cambiar el HTML.
+   ============================================================ */
+
+/* ---------- Tipografía de impacto (Bebas Neue) ---------- */
+.bg-number,
+.fp-title,
+.pm-title,
+.exp-num,
+.value-letter,
+.values-bg-text,
+.stat-num,
+.about-badge span,
+.ps-node {
+  font-family: var(--font-bebas);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Corte diagonal en imágenes destacadas ---------- */
+/* Wrappers que reciben el tratamiento: quitar redondeo/clip previo */
+.zigzag-image,
+.bim-about-img,
+.about-split .img-side,
+.svc-section .svc-img,
+.project-second .ps-img {
+  position: relative;
+  border-radius: 0;
+  border: none;
+  overflow: visible;
+}
+
+/* Losa amarilla en diagonal detrás de la imagen */
+.zigzag-image::before,
+.bim-about-img::before,
+.about-split .img-side::before,
+.svc-section .svc-img::before,
+.project-second .ps-img::before {
+  content: '';
+  position: absolute;
+  top: -7%;
+  right: -5%;
+  width: 62%;
+  height: 114%;
+  background: var(--c-accent);
+  clip-path: polygon(26% 0, 100% 0, 74% 100%, 0 100%);
+  z-index: 0;
+}
+/* Variante: losa a la izquierda en bloques invertidos */
+.svc-section-inner.rev .svc-img::before,
+.bim-about-img::before {
+  right: auto;
+  left: -5%;
+}
+
+/* La imagen misma, recortada en paralelogramo, sobre la losa */
+.zigzag-image > .img-ph,
+.zigzag-image > img,
+.bim-about-img > .img-ph,
+.bim-about-img > img,
+.about-split .img-side > .img-ph,
+.about-split .img-side > img,
+.svc-section .svc-img > .img-ph,
+.svc-section .svc-img > img,
+.project-second .ps-img > .img-ph,
+.project-second .ps-img > img {
+  position: relative;
+  z-index: 1;
+  clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%);
+  border-radius: 0;
+}
+
+/* El badge de años queda por encima del corte */
+.about-split .img-side .about-badge { z-index: 2; }
+
+/* ---------- Losa diagonal en heroes internos ---------- */
+.page-hero { overflow: clip; }
+.page-hero-inner { position: relative; z-index: 1; }
+.page-hero::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: 4%;
+  width: clamp(130px, 18vw, 300px);
+  height: 145%;
+  background: var(--c-accent);
+  transform: skewX(-16deg);
+  z-index: 0;
+}
+.page-hero .bg-number {
+  z-index: 1;
+  color: rgba(20,20,18,0.16);
+}
+
+/* ---------- Losas diagonales en CTA final ---------- */
+.cta-final { position: relative; overflow: clip; }
+.cta-final .container { position: relative; z-index: 1; }
+.cta-final::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  bottom: -15%;
+  right: -70px;
+  width: clamp(130px, 17vw, 260px);
+  background: var(--c-accent);
+  transform: skewX(-14deg);
+}
+.cta-final::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  right: clamp(50px, 11vw, 190px);
+  width: 64px;
+  height: 46%;
+  background: var(--c-accent);
+  opacity: 0.28;
+  transform: skewX(-14deg);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .page-hero::after { width: clamp(90px, 16vw, 160px); right: -4%; }
+  .cta-final::before { right: -90px; }
+  .cta-final::after { display: none; }
+}
