@@ -400,6 +400,46 @@
   font-size: clamp(2rem,5vw,4rem);
   margin-bottom: 2rem;
 }
+
+/* Variante de máximo contraste — remate del inicio, ligado al footer */
+.cta-final--deep {
+  background: #050505;
+  padding: clamp(6rem, 10vw, 9rem) var(--gutter);
+  position: relative;
+  border-bottom: 1px solid rgba(245,197,24,0.18);
+}
+.cta-final--deep::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,197,24,0.5), transparent);
+}
+.cta-final--deep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 55%),
+    radial-gradient(45% 50% at 15% 100%, rgba(245,197,24,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-final--deep > * { position: relative; z-index: 1; }
+.cta-final--deep h2 {
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.cta-final--deep h2 em {
+  font-style: normal;
+  color: var(--c-accent);
+  font-weight: 700;
+}
+.cta-final--deep .section-tag {
+  margin-bottom: 1.5rem;
+}
 .cta-actions {
   display: flex;
   gap: 1rem;

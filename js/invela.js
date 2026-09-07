@@ -409,7 +409,9 @@
 
     var video = intro.querySelector('video');
     var navbar = document.querySelector('.navbar');
+    var body = document.body;
 
+    body.classList.add('has-video-intro');
     if (navbar) navbar.classList.add('nav-hidden');
 
     var soundBtn = document.createElement('button');
@@ -418,7 +420,8 @@
     soundBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25M11.25 5.636l-4.5 3.364H3v6h3.75l4.5 3.364V5.636z"/></svg>';
     intro.appendChild(soundBtn);
 
-    soundBtn.addEventListener('click', function () {
+    soundBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
       if (video) {
         video.muted = !video.muted;
         soundBtn.innerHTML = video.muted
@@ -428,32 +431,27 @@
       }
     });
 
-    var dismissed = false;
-    function dismissIntro() {
-      if (dismissed) return;
-      dismissed = true;
-      intro.classList.add('vi-hidden');
-      if (navbar) navbar.classList.remove('nav-hidden');
-      if (video) { video.muted = true; }
-      setTimeout(function () {
-        intro.style.display = 'none';
-        if (video) { video.pause(); }
-      }, 1800);
+    var ticking = false;
+    function updateFade() {
+      var vh = window.innerHeight;
+      var y = window.scrollY;
+      var progress = Math.min(y / (vh * 0.9), 1);
+      var opacity = 1 - progress;
+      intro.style.opacity = opacity;
+      intro.style.pointerEvents = progress >= 0.98 ? 'none' : '';
+      if (navbar) {
+        if (y > 40) navbar.classList.remove('nav-hidden');
+        else navbar.classList.add('nav-hidden');
+      }
+      if (progress >= 0.98) {
+        if (video && !video.muted) { video.muted = true; }
+      }
+      ticking = false;
     }
-
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 80) dismissIntro();
+      if (!ticking) { window.requestAnimationFrame(updateFade); ticking = true; }
     }, { passive: true });
-
-    window.addEventListener('wheel', function (e) {
-      if (e.deltaY > 0) dismissIntro();
-    }, { passive: true });
-
-    var touchY = 0;
-    intro.addEventListener('touchstart', function (e) { touchY = e.touches[0].clientY; }, { passive: true });
-    intro.addEventListener('touchmove', function (e) {
-      if (touchY - e.touches[0].clientY > 40) dismissIntro();
-    }, { passive: true });
+    updateFade();
   }
 
   /* =========================================================

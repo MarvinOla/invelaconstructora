@@ -52,10 +52,10 @@
 }
 
 .nav-logo img {
-  height: 90px;        /* logo grande — petición del cliente */
+  height: 130px;        /* logo XL — petición del cliente */
   width: auto;
-  transition: transform var(--t-mid), opacity var(--t-mid);
-  filter: brightness(1);
+  transition: transform var(--t-mid), opacity var(--t-mid), filter var(--t-mid);
+  filter: brightness(0) invert(1);   /* siempre blanco */
 }
 
 .nav-logo:hover img {

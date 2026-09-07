@@ -304,9 +304,14 @@
 }
 
 /* ===================== VIDEO INTRO ===================== */
+/* Reserva 100vh al inicio del documento para que el video (fixed) siempre
+   se vea en la parte superior; al hacer scroll se revela el sitio detrás. */
+body.has-video-intro { padding-top: 100svh; }
+body.has-video-intro .video-intro { margin-top: -100svh; }
+
 .video-intro {
   position: fixed;
-  inset: 0;
+  top: 0; left: 0; right: 0;
   height: 100svh;
   background: var(--c-dark);
   display: flex;
@@ -315,6 +320,7 @@
   justify-content: center;
   overflow: hidden;
   z-index: 900;
+  will-change: opacity;
 }
 .video-intro video {
   position: absolute;
@@ -361,12 +367,6 @@
 @keyframes vi-ring { 0%{ transform: scale(0.8); opacity: 0.6; } 100%{ transform: scale(1.8); opacity: 0; } }
 @keyframes vi-bounce { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(8px); } }
 
-.video-intro.vi-hidden {
-  pointer-events: none;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
 .vi-sound-btn {
   position: absolute;

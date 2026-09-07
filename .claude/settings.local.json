@@ -3,7 +3,13 @@
     "allow": [
       "Read(//c/Users/INVELA/Downloads/**)",
       "Bash(xxd)",
-      "Bash(npx http-server *)"
+      "Bash(npx http-server *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8000/index.html)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
